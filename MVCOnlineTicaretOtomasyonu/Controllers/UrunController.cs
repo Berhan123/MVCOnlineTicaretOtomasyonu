@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MVCOnlineTicaretOtomasyonu.Models.Siniflar;
+
+namespace MVCOnlineTicaretOtomasyonu.Controllers
+{
+    public class UrunController : Controller
+    {
+        Context c = new Context();
+        public ActionResult Index()
+        {
+            var urunler = c.Uruns.Where(x => x.Durum == true).ToList();
+            return View(urunler);
+        }
+        [HttpGet]
+        public ActionResult YeniUrun()
+        {
+            List<SelectListItem> deger1 = (from x in c.Kategoris.ToList() select new SelectListItem()
+            {
+                Text = x.KategoriAd,
+                Value = x.KategoriId.ToString()
+            }).ToList();
+            ViewBag.dgr1 = deger1;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniUrun(Urun p)
+        {
+            c.Uruns.Add(p);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UrunSil(int id)
+        {
+            var deger = c.Uruns.Find(id);
+            deger.Durum = false;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult UrunGetir(int id)
+        {
+            List<SelectListItem> deger1 = (from x in c.Kategoris.ToList()
+                select new SelectListItem()
+                {
+                    Text = x.KategoriAd,
+                    Value = x.KategoriId.ToString()
+                }).ToList();
+            ViewBag.dgr1 = deger1;
+            var d = c.Uruns.Find(id);
+            return View("UrunGetir",d);
+        }
+        public ActionResult UrunGuncelle(Urun p)
+        {
+            var urn = c.Uruns.Find(p.Urunid);
+            urn.Durum = p.Durum;
+            urn.AlisFiyat = p.AlisFiyat;
+            urn.Kategoriid = p.Kategoriid;
+            urn.Marka = p.Marka;
+            urn.SatisFiyat = p.SatisFiyat;
+            urn.UrunAd = p.UrunAd;
+            urn.UrunGorsel = p.UrunGorsel;
+            urn.Stok = p.Stok;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+    }
+}

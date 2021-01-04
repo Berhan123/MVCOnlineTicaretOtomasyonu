@@ -16,9 +16,9 @@ namespace MVCOnlineTicaretOtomasyonu.Models.Siniflar
         public Decimal Toplam { get; set; }
 
 
-        public Urun Urun { get; set; }
-        public Cariler Cariler { get; set; }
-        public Personel Personel { get; set; }
+        public virtual Urun Urun { get; set; }
+        public virtual Cariler Cariler { get; set; }
+        public virtual Personel Personel { get; set; }
 
     }
 }
