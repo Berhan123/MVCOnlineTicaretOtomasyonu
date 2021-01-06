@@ -1,0 +1,40 @@
+﻿@using MVCOnlineTicaretOtomasyonu.Models.Siniflar
+@model List<Cariler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string durum;
+}
+
+<table class="table table-striped">
+    <tr>
+        <td>Cari ID</td>
+        <td>Ad</td>
+        <td>Soyad</td>
+        <td>Şehir</td>
+        <td>Mail</td>
+        <td>Aktif/Pasif</td>
+        <td>Detaylar</td>
+    </tr>
+    @foreach (var x in Model)
+    {
+        if (x.Durum == true)
+        {
+             durum = "Aktif";
+        }
+        else
+        {
+             durum = "Pasif";
+        }
+            <tr>
+            <td>@x.Cariid</td>
+            <td>@x.CariAd</td>
+            <td>@x.CariSoyad</td>
+            <td>@x.CariSehir</td>
+            <td>@x.CariMail</td>
+            <td>@durum</td>
+            <td><a href="/Cari/CariSil/@x.Cariid" class="btn btn-danger">Sil</a><a href="/Cari/CariGetir/@x.Cariid" class="btn btn-warning">Güncelle</a><a href="/Cari/MusteriSatis/@x.Cariid" class="btn btn-dark">Satış Geçmişi</a></td>
+        </tr>
+    }
+</table>
+<a href="/Cari/YeniCari/" class="btn btn-info">Yeni Cari Ekle</a>

@@ -13,6 +13,9 @@ namespace MVCOnlineTicaretOtomasyonu.Models.Siniflar
         public int Departmanid { get; set; }
         [Column(TypeName = "Varchar"), StringLength(30)]
         public string Departmanad { get; set; }
+
+        public bool Durum { get; set; }
+
         public ICollection<Personel> Personels{ get; set; }
 
     }
