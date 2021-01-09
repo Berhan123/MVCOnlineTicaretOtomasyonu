@@ -1,0 +1,35 @@
+﻿@using MVCOnlineTicaretOtomasyonu.Models.Siniflar
+@model List<Personel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Personel</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Görsel</th>
+        <th>Departman</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Personelid</td>
+            <td>@item.PersonelAd</td>
+            <td>@item.PersonelSoyad</td>
+            <td>@item.PersonelGorsel</td>
+            <td>@item.Departman.Departmanad</td>
+            <td><a href="/Personel/PersonelGetir/@item.Personelid" class="btn btn-success">Güncelle</a>
+                <a href="/Departman/DepartmanPersonelSatis/@item.Personelid" class="btn btn-dark">Detaylar</a>
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="/Personel/PersonelEkle/" class="btn btn-info">Personel Ekle</a>
