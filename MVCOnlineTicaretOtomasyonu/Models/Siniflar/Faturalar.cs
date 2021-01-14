@@ -21,13 +21,20 @@ namespace MVCOnlineTicaretOtomasyonu.Models.Siniflar
 
         [Column(TypeName = "Varchar"), StringLength(60)]
         public string VerigiDairesi { get; set; }
-        public DateTime Saat { get; set; }
+
+
+        [Column(TypeName = "Varchar"), StringLength(5)]
+        public string Saat { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
         public string TeslimEden { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
         public string TeslimAlan { get; set; }
+
+        public Decimal Toplam { get; set; }
+
+
         public ICollection<FaturaKalem> FaturaKalems { get; set; }
     }
 }
