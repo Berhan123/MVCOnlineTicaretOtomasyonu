@@ -64,5 +64,11 @@ namespace MVCOnlineTicaretOtomasyonu.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult PersonelListe()
+        {
+            var sorgu = c.Personels.ToList();
+            return View(sorgu);
+        }
     }
 }

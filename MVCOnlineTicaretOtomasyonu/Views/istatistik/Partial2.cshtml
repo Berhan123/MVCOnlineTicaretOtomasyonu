@@ -1,0 +1,53 @@
+﻿@using MVCOnlineTicaretOtomasyonu.Models.Siniflar
+@model List<Cariler>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
+
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cari Adı Soyadı</th>
+                            <th>Cari Şehir</th>
+                            <th>Durum</th>
+                            <th>E-Mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.Cariid</td>
+                                <td>@x.CariAd @x.CariSoyad</td>
+                                <td>@x.CariSehir</td>
+                                <td>
+                                    <span class="tag tag-danger">
+                                        @{
+                                            if (x.Durum == true)
+                                            {
+                                                Write("Aktif");
+                                            }
+                                            else
+                                            {
+                                                Write("Pasif");
+                                            }
+                                    }
+                                </span>
+                            </td>
+                            <td>@x.CariMail</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+</div>

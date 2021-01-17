@@ -21,8 +21,6 @@ namespace MVCOnlineTicaretOtomasyonu.Models.Siniflar
 
         [Column(TypeName = "Varchar"), StringLength(60)]
         public string VerigiDairesi { get; set; }
-
-
         [Column(TypeName = "Varchar"), StringLength(5)]
         public string Saat { get; set; }
 

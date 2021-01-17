@@ -1,0 +1,48 @@
+﻿@using MVCOnlineTicaretOtomasyonu.Models.Siniflar
+@model List<Urun>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ürün Adı</th>
+                            <th>Marka</th>
+                            <th>Stok</th>
+                            <th>Alış Fiyat</th>
+                            <th>Satış Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.Urunid</td>
+                                <td>@x.UrunAd</td>
+                                <td>@x.Marka</td>
+                                @{ if (x.Stok < 20)
+                                    {
+                                        <td class="bg-red">@x.Stok</td>
+                                    }
+                                   else
+                                   {
+                            <td class="bg-green">@x.Stok</td>
+                                   }
+                                }
+                                <td>@x.AlisFiyat</td>
+                                <td>@x.SatisFiyat</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

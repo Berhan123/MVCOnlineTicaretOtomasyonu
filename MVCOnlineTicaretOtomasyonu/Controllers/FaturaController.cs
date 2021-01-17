@@ -57,5 +57,17 @@ namespace MVCOnlineTicaretOtomasyonu.Controllers
 
             return View(degerPersonel);
         }
+        [HttpGet]
+        public ActionResult YeniKalem()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult YeniKalem(FaturaKalem p)
+        {
+            c.FaturaKalems.Add(p);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

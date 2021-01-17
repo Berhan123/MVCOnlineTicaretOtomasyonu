@@ -13,10 +13,12 @@ namespace MVCOnlineTicaretOtomasyonu.Models.Siniflar
         public int Personelid { get; set; }
 
         [Column(TypeName = "Varchar"), StringLength(30)]
+        [Display(Name="Personel Adı")]
         public string PersonelAd { get; set; }
+        [Display(Name = "Personel Soyadı")]
         [Column(TypeName = "Varchar"), StringLength(30)]
         public string PersonelSoyad { get; set; }
-
+        [Display(Name = "Personel Görsel")]
         [Column(TypeName = "Varchar"), StringLength(250)]
         public string PersonelGorsel { get; set; }
         public ICollection<SatisHareket> SatisHarekets { get; set; }
