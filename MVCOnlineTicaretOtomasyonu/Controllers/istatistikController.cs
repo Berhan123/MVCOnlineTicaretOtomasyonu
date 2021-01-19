@@ -27,7 +27,7 @@ namespace MVCOnlineTicaretOtomasyonu.Controllers
                  .FirstOrDefault())).Select(k => k.UrunAd).FirstOrDefault();
             var deger14 = c.SatisHarekets.Sum(x => x.Toplam).ToString();
             var deger15 = c.SatisHarekets.Count(x => x.Tarih == DateTime.Today).ToString();
-            //var deger16 = c.SatisHarekets.Where(x => x.Tarih == DateTime.Today).Sum(y => y.Toplam);
+            var deger16 = c.SatisHarekets.Where(x => x.Tarih == DateTime.Today).Sum(y =>(decimal?) y.Toplam)??0;
             var deger12 = c.Uruns.GroupBy(x => x.Marka).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault();
             ViewBag.d1 = deger1;
             ViewBag.d2 = deger2;
@@ -43,7 +43,7 @@ namespace MVCOnlineTicaretOtomasyonu.Controllers
             ViewBag.d13 = deger13;
             ViewBag.d14 = deger14;
             ViewBag.d15 = deger15;
-            // ViewBag.d16 = deger16;
+            ViewBag.d16 = deger16;
             ViewBag.d12 = deger12;
 
             return View();
